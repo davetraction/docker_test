@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  web:
+    container_name: traction_web
+    build: .
+    image: traction:web
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/disk1
+    environment:
+      FLASK_ENV: development
+volumes:
+  src:

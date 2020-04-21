@@ -1,0 +1,7 @@
+$ docker build -t my-php-app .
+$ docker run -d --name my-running-app my-php-app
+
+#Delete all images
+docker image prune --all
+
+docker exec -it dockertest_web_1 bash
