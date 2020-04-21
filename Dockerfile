@@ -11,8 +11,8 @@ RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-g
 apt-utils apache2 php7.2-common php7.2-cli php7.2-fpm php7.2-opcache php7.2-gd php7.2-mysql \
 php7.2-curl php7.2-intl php7.2-xsl php7.2-mbstring php7.2-zip php7.2-bcmath php7.2-soap
 
-RUN mkdir /disk1  && chown www-data /disk1
-
+RUN mkdir /disk1
+RUN chown 33:33 /disk1
 # Enable apache mods.
 #RUN a2enmod php7.load
 #RUN a2enmod rewrite
@@ -33,7 +33,7 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 # Expose apache.
 EXPOSE 80
 
-ADD conf/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+#ADD conf/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
